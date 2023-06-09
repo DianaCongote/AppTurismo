@@ -1,0 +1,297 @@
+class HotelesTab extends StatelessWidget {
+  const HotelesTab({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+      ),
+      itemCount: 7, // Cantidad de elementos en la lista de lugares
+      itemBuilder: (context, position) {
+        return InkWell(
+          onTap: () {
+            Navigator.pushNamed(context, '/pagina${position + 1}');
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.0),
+              border: Border.all(
+                color: Colors.white,
+                width: 2.0,
+              ),
+            ),
+            child: Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10.0),
+                  child: AspectRatio(
+                    aspectRatio: 1.0,
+                    child: Image.asset(
+                      "assets/Hotel${position % 15}.png",
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [
+                          Colors.black.withOpacity(0.8),
+                          Colors.transparent,
+                        ],
+                      ),
+                    ),
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      imageTitles[position], // Títulos de los lugares
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+
+
+class Restaurantespagina1 extends StatelessWidget {
+  const Restaurantespagina1({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Urban Burger'),
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8.0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 2,
+                    blurRadius: 5,
+                    offset: const Offset(0, 3),
+                  ),
+                ],
+              ),
+              child: ClipRRect(
+                child: Image.asset(
+                  "assets/Urban.png",
+                ),
+              ),
+            ),
+            const SizedBox(height: 16.0),
+            Text(
+              'Información General',
+              style: TextStyle(
+                fontSize: 24.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 8.0),
+            Text(
+              'Hornoyaco es una imponente cascada de unos 55 metros de altura aproximadamente. Se ha convertido en uno de los atractivos turísticos naturales que debemos visitar en nuestro viaje por Putumayo.',
+              style: TextStyle(fontSize: 16.0),
+            ),
+            const SizedBox(height: 24.0),
+            Text(
+              'Dónde queda la Cascada de Hornoyaco',
+              style: TextStyle(
+                fontSize: 24.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 8.0),
+            Text(
+              'La cascada de Hornoyaco queda sobre la vereda el zarzal municipio de Mocoa. Limites con el parque natural de los Churumbelos. Se entrada queda en el km 2 en la vía de Mocoa Conduce a Villagarzón, unos metros antes de Caliyaco.',
+              style: TextStyle(fontSize: 16.0),
+            ),
+            const SizedBox(height: 24.0),
+            ElevatedButton.icon(
+              onPressed: () async {
+                // URL de Google Maps para mostrar la ubicación
+                String url =
+                    'https://www.google.com/maps/dir/Mocoa,+Putumayo/Ornoyaco,+Mocoa,+Putumayo/@1.132798,-76.6456227,7700m/data=!3m1!1e3!4m13!4m12!1m5!1m1!1s0x8e28b286a74d01f9:0x856c0ee6cd8a160!2m2!1d-76.6481284!2d1.1477941!1m5!1m1!1s0x8e28ade9a492fcb3:0xcaa6d7d8d739be34!2m2!1d-76.6204571!2d1.1169754';
+
+                // Verificar si la app de Google Maps está instalada en el dispositivo
+                if (await canLaunch(url)) {
+                  // Abrir Google Maps
+                  await launch(url);
+                } else {
+                  // No se puede abrir Google Maps
+                  print('No se puede abrir.');
+                }
+              },
+              icon: Icon(Icons.map),
+              label: Text(
+                'Ver en Google Maps',
+                style: TextStyle(
+                  fontSize: 16.0,
+                ),
+              ),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blue,
+                onPrimary: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                padding: const EdgeInsets.all(16.0),
+              ),
+            ),
+            const SizedBox(height: 24.0),
+            Text(
+              'Al cruzar el puente sobre el río Mocoa, la primera parte del camino es a cielo abierto, pasamos por algunas viviendas de moradores locales, después ya se llega a la parte de camino que está sobre el bosque.',
+              style: TextStyle(fontSize: 16.0),
+            ),
+            const SizedBox(height: 8.0),
+            Text(
+              'En el transcurso de la caminata se pasa por dos puentes en madera para sobrepasar pequeñas corrientes de agua (se recomienda observar las medidas de seguridad, no hacer actos que puedan provocar un accidente).',
+              style: TextStyle(fontSize: 16.0),
+            ),
+            const SizedBox(height: 8.0),
+            Text(
+              'Se llega a la parte superior de la cascada, en esta parte también podemos observar un puente en piedra o roca casi al borde de la cascada Hornoyaco. Se continúa el camino para poder bajar y poder llegar al pozo que forma al caer la cascada. En esta parte del camino se debe ser cuidadoso por ser siempre empinado.',
+              style: TextStyle(fontSize: 16.0),
+            ),
+            const SizedBox(height: 8.0),
+            Text(
+              'Valor ingreso: \$5.000',
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 24.0),
+            ElevatedButton.icon(
+              onPressed: () async {
+                // URL de WhatsApp con el número de teléfono o ID del contacto
+                String url = 'https://wa.me/+573123456';
+                await launch(url);
+                // Verificar si la app de WhatsApp está instalada en el dispositivo
+              },
+              icon: Icon(Icons.chat),
+              label: Text(
+                'Contactar Guía Turista',
+                style: TextStyle(
+                  fontSize: 16.0,
+                ),
+              ),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.green,
+                onPrimary: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                padding: const EdgeInsets.all(16.0),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+class RestaurantesTab extends StatelessWidget {
+  const RestaurantesTab({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+      ),
+      itemCount: 8, // Cantidad de elementos en la lista de lugares
+      itemBuilder: (context, position) {
+        return InkWell(
+          onTap: () {
+            Navigator.pushNamed(context, '/restaurantespagina${position + 1}');
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.0),
+              border: Border.all(
+                color: Colors.white,
+                width: 2.0,
+              ),
+            ),
+            child: Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10.0),
+                  child: AspectRatio(
+                    aspectRatio: 1.0,
+                    child: Image.asset(
+                      "assets/Restaurante${position % 8}.png",
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [
+                          Colors.black.withOpacity(0.8),
+                          Colors.transparent,
+                        ],
+                      ),
+                    ),
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      restaurantesTitles[position], // Títulos de los lugares
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+void _sendMessage(String message) {
+    String whatsappUrl =
+        'https://wa.me/+573112144366text=${Uri.encodeComponent(message)}';
+    //String emailUrl = 'mailto:dianacongote00@gmail.com?subject=Nuevo sitio&body=${Uri.encodeComponent(message)}';
+
+    // Choose either WhatsApp or email based on your preference
+    launch(whatsappUrl);
+    //launch(emailUrl);
+  }
+  https://wa.me/+573112144366?text=

@@ -1,5 +1,5 @@
-name: flutter_application_1
-description: A new Flutter project.
+name: turismocoa
+description: Aplicacion movil que incentiva el turimos en Mocoa.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -30,9 +30,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  url_launcher: ^6.0.10
+  url_launcher: ^6.1.11
   flutter_svg: ^0.22.0
-
+  webview_flutter: ^2.0.13
+  geolocator: ^8.0.1
+  video_player: ^2.2.5
+  youtube_player_flutter: ^8.0.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -88,6 +91,45 @@ flutter:
     - assets/cascada2.png
     - assets/entrada.png
     - assets/Mocoa.png
+    - assets/Restaurante1.png
+    - assets/Restaurante2.png
+    - assets/Restaurante3.png
+    - assets/Restaurante4.png
+    - assets/Restaurante5.png
+    - assets/Restaurante6.png
+    - assets/Restaurante7.png
+    - assets/Restaurante0.png
+    - assets/Hotel0.png
+    - assets/Hotel1.png
+    - assets/Hotel2.png
+    - assets/Hotel3.png
+    - assets/Hotel4.png
+    - assets/Hotel5.png
+    - assets/Hotel6.png
+    - assets/Urban.png
+    - assets/Hornoyaco2.jpg
+    - assets/mandiyaco.jpg
+    - assets/mandiyaco2.jpg
+    - assets/ojodios2.jpg
+    - assets/ojodios.jpeg
+    - assets/aguacate.jpg
+    - assets/aguacate.png
+    - assets/saltoindio.png
+    - assets/saltoindio.jpg
+    - assets/caliyaco.jpg
+    - assets/caliyaco1.jpg
+    - assets/golondrino.jpg
+    - assets/golondrino1.jpg
+    - assets/cuevaduende1.jpg
+    - assets/cuevaduende.jpg
+    - assets/ocultasol.jpg
+    - assets/ocultasol1.jpg
+    - assets/vides1.jpg
+    - assets/vides.jpg
+    - assets/canalendre.jpg
+    - assets/canalendre1.jpg
+    - assets/video1.mp4
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
